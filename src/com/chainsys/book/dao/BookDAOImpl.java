@@ -128,4 +128,21 @@ public class BookDAOImpl implements BookDAO {
 		return bookSet;
 	}
 
+	@Override
+	public Set<Book> findByDate(String date) {
+		try {
+			pstmt = con.prepareStatement("select * from books_2597 where published_date=?");
+			pstmt.setString(1, date);
+			rs = pstmt.executeQuery();
+			bookSet = new HashSet<>();
+			while (rs.next()) {
+				Book book = new Book(rs.getInt("id"), rs.getString("name"), rs.getDate("published_date").toLocalDate());
+				bookSet.add(book);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return bookSet;
+	}
+
 }

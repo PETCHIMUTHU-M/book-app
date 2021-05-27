@@ -19,4 +19,6 @@ public interface BookDAO {
 
 	Set<Book> findByName(String name);
 
+	Set<Book> findByDate(String date);
+
 }

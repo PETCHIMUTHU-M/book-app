@@ -47,4 +47,9 @@ public class BookServiceImpl implements BookService{
 		return dao.findByName(name);
 	}
 
+	@Override
+	public Set<Book> findByDate(String date) {
+		return dao.findByDate(date);
+	}
+
 }

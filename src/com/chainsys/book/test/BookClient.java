@@ -18,6 +18,7 @@ public class BookClient {
 		List<Date> datelist;
 		int id;
 		String name;
+		String date;
 
 		BookService service = new BookServiceImpl();
 
@@ -66,6 +67,14 @@ public class BookClient {
 			bookSet = service.findByName(name);
 			System.out.println(bookSet);
 			break;	
+			
+		case 7:
+			System.out.println("Find Book by Published Date");
+			System.out.println("Enter the Date in the dd/mm/yy format");
+			date = scanner.next();
+			bookSet = service.findByDate(date);
+			System.out.println(bookSet);
+			break;
 
 		default:
 			break;
