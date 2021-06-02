@@ -75,7 +75,21 @@ public class BookClient {
 			bookSet = service.findByDate(date);
 			System.out.println(bookSet);
 			break;
-
+			
+		case 8:
+			System.out.println("Find Book name by Id");
+			System.out.println("Enter the Id");
+			id = scanner.nextInt();
+			name = service.findNameById(id);
+			System.out.println(name);
+			
+		case 9:
+			System.out.println("Find Book Id by Name");
+			System.out.println("Enter the Name");
+			name = scanner.next();
+			id = service.findIdByName(name);
+			System.out.println(id);
+			
 		default:
 			break;
 		}

@@ -52,4 +52,14 @@ public class BookServiceImpl implements BookService{
 		return dao.findByDate(date);
 	}
 
+	@Override
+	public String findNameById(int id) {
+		return dao.findNameById(id);
+	}
+	
+	@Override
+	public int findIdByName(String name) {
+		return dao.findIdByName(name);
+	}
+
 }

@@ -22,4 +22,8 @@ public interface BookService {
 
 	Set<Book> findByDate(String date);
 
+	String findNameById(int id);
+
+	int findIdByName(String name);
+
 }

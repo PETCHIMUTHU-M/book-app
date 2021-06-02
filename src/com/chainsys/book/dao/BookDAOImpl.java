@@ -22,12 +22,14 @@ public class BookDAOImpl implements BookDAO {
 	private static List<String> namelist;
 	private static List<Integer> idlist;
 	private static List<Date> datelist;
+	private static int id;
+	private static String name;
 
 	public BookDAOImpl() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 //			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "root", "password");
-			con = DriverManager.getConnection("jdbc:oracle:thin:@192.168.0.20:1521:EBS1228", "apps", "apps");
+			con = DriverManager.getConnection("jdbc:oracle:thin:@192.168.0.20:1521:DBEBS12", "apps", "apps");
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -143,6 +145,36 @@ public class BookDAOImpl implements BookDAO {
 			e.printStackTrace();
 		}
 		return bookSet;
+	}
+
+	@Override
+	public String findNameById(int id) {
+		try {
+			pstmt = con.prepareStatement("select name from books_2597 where id=?");
+			pstmt.setInt(1, id);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				name = rs.getString("name");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return name;
+	}
+	
+	@Override
+	public int findIdByName(String name) {
+		try {
+			pstmt = con.prepareStatement("select id from books_2597 where name=?");
+			pstmt.setString(1, name);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				id = rs.getInt("id");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return id;
 	}
 
 }
